@@ -1,0 +1,79 @@
+var checkerboard = [[null, null, null, null, null, null, null, null],
+                    [null, null, null, null, null, null, null, null],
+                    [null, null, null, null, null, null, null, null],
+                    [null, null, null, null, null, null, null, null],
+                    [null, null, null, null, null, null, null, null],
+                    [null, null, null, null, null, null, null, null],
+                    [null, null, null, null, null, null, null, null],
+                    [null, null, null, null, null, null, null, null]];
+
+function setSquare(player, row, col) {
+  // Your Code Here
+  checkerboard[row][col].push(player);
+}
+
+function getPieceAt(row, col) {
+  // Your Code Here
+  return checkerboard[row,col];
+}
+
+function clearBoard () {
+	checkerboard.map(function (){
+		return null;
+	});
+}
+
+function setUpRed () {
+	setSquare('R',0,0);
+	setSquare('R',0,2);
+	setSquare('R',0,4);
+	setSquare('R',0,6);
+	setSquare('R',1,1);
+	setSquare('R',1,3);
+	setSquare('R',1,5);
+	setSquare('R',1,7);
+	setSquare('R',2,0);
+	setSquare('R',2,2);
+	setSquare('R',2,4);
+	setSquare('R',2,6);
+
+	return;
+}
+
+function setUpBlack() {
+	setSquare('B',7,1);
+	setSquare('B',7,3);
+	setSquare('B',7,5);
+	setSquare('B',7,7);
+	setSquare('B',6,0);
+	setSquare('B',6,2);
+	setSquare('B',6,4);
+	setSquare('B',6,6);
+	setSquare('B',5,1);
+	setSquare('B',5,3);
+	setSquare('B',5,5);
+	setSquare('B',5,7);
+
+	return;
+}	
+
+var pieces = {
+	'red':[[0,0],[0,2],[0,4],[0,6],[1,1],[1,3],[1,5],[1,7],[2,0],[2,2],[2,4],[2,6]] ,
+	'black':[[7,1],[7,3],[7,5],[7,7],[6,0],[6,2],[6,4],[6,6],[5,1],[5,3],[5,5],[5,7]]
+}
+	console.log(pieces['red']);
+	console.log(pieces['black']);
+	setUpBlack();
+	setUpRed();
+
+pieces['red'].map(function(piece){
+      var row = piece[0];
+      var col = piece[1];
+      return checkerboard[row][col] === 'R';
+    });
+
+  pieces['black'].map(function(piece){
+      var row = piece[0];
+      var col = piece[1];
+      return checkerboard[row][col] === 'B';
+    });	
