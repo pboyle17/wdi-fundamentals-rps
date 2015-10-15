@@ -4,8 +4,8 @@
 'use strict';
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
-    return prompt("pick rock paper or scissors");
+    
+    return prompt("Please choose rock, paper or scissors. You may also type 'quit' to quit");
 }
 function randomPlay() {
     var randomNumber = Math.random();
@@ -25,7 +25,7 @@ function getPlayerMove(move) {
     // Write an expression that operates on a variable called `move`
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `getInput()`.
-    return getInput();
+    return getInput().toLowerCase();
 }
 
 function getComputerMove(move) {
@@ -33,7 +33,7 @@ function getComputerMove(move) {
     // If a `move` has a value, your expression should evaluate to that value.
     // However, if `move` is not specified / is null, your expression should equal `randomPlay()`.
 
-    return randomPlay();
+    return randomPlay().toLowerCase();
 }
 
 function getWinner(playerMove,computerMove) {
@@ -77,13 +77,17 @@ function getWinner(playerMove,computerMove) {
     if (playerMove=='paper' && computerMove == 'paper'){
         return 'tie';
     }
+    if (playerMove=='quit') {
+        return 'quit';
+    }
+
 }
 
 function playToFive() {
-    console.log("Let's play Rock, Paper, Scissors");
+    alert("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
-    console.log('player wins : '+playerWins+'   computer wins : '+computerWins);
+    alert('player wins : '+playerWins+'           computer wins : '+computerWins);
 
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
     while(playerWins< 5 && computerWins < 5 ){
@@ -92,30 +96,42 @@ function playToFive() {
         
         if(winner=='player'){
             playerWins+=1;
-            console.log('player Won the round!');
-            console.log('player wins: ',playerWins,'computer wins:',computerWins);
+            alert('player Won the round!');
+            alert('player wins: '+playerWins+' computer wins: '+computerWins);
 
         }
         else if(winner=='computer'){
             computerWins+=1;
-            console.log('computer Won the round!');
-            console.log('player wins: ',playerWins,'computer wins:',computerWins);
+            alert('computer Won the round!');
+            alert('player wins: '+playerWins+' computer wins: '+computerWins);
 
+        }
+        else if (winner=='tie') {
+            alert('tie!')
+            alert('player wins: '+playerWins+' computer wins: '+computerWins);
+        }
+        else if(winner=='quit'){
+            alert('Thanks for playing, try your skill again!');
+            break;
         }
         else {
-            console.log('tie!')
-            console.log('player wins: ',playerWins,'computer wins:',computerWins);
+            alert('Please enter a valid selection of rock, paper or scissors');
         }
     }
 
+
+    
     if(playerWins>computerWins){
-        console.log('player won the Match!');
+        alert('Congrats! You won the Match! The score was player: '+playerWins+' to computer: '+computerWins);
+    }
+    else if (computerWins>playerWins) {
+        alert('Sorry! computer won the Match! The score was player: '+playerWins+' to computer: '+computerWins);
     }
     else {
-        console.log('computer won the Match');
+        alert('The match ended in a tie. The score was player: '+playerWins+' to computer: '+computerWins);
     }
 
-    return [playerWins, computerWins];
+    return ;
 }
 
 playToFive();
