@@ -91,22 +91,27 @@ function playToFive() {
 
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
     while(playerWins< 5 && computerWins < 5 ){
-       var winner=getWinner(getPlayerMove(),getComputerMove());
+       var playerMove=getPlayerMove();
+       var computerMove=getComputerMove();
+       var winner=getWinner(playerMove,computerMove);
         
         
         if(winner=='player'){
             playerWins+=1;
+            alert('player chose: '+ playerMove+'          Computer chose: '+computerMove);
             alert('player Won the round!');
             alert('player wins: '+playerWins+' computer wins: '+computerWins);
 
         }
         else if(winner=='computer'){
             computerWins+=1;
+            alert('player chose: '+ playerMove+'          Computer chose: '+computerMove);
             alert('computer Won the round!');
             alert('player wins: '+playerWins+' computer wins: '+computerWins);
 
         }
         else if (winner=='tie') {
+            alert('player chose: '+ playerMove+'          Computer chose: '+computerMove);
             alert('tie!')
             alert('player wins: '+playerWins+' computer wins: '+computerWins);
         }
@@ -122,13 +127,13 @@ function playToFive() {
 
     
     if(playerWins>computerWins){
-        alert('Congrats! You won the Match! The score was player: '+playerWins+' to computer: '+computerWins);
+        alert('Congrats! You won the Match! The score was player: '+playerWins+'    computer: '+computerWins);
     }
     else if (computerWins>playerWins) {
-        alert('Sorry! computer won the Match! The score was player: '+playerWins+' to computer: '+computerWins);
+        alert('Sorry! computer won the Match! The score was player: '+playerWins+'    computer: '+computerWins);
     }
     else {
-        alert('The match ended in a tie. The score was player: '+playerWins+' to computer: '+computerWins);
+        alert('The match ended in a tie. The score was player: '+playerWins+'    computer: '+computerWins);
     }
 
     return ;
